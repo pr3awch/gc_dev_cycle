@@ -76,8 +76,6 @@ def main():
     try:
         event = service.events().insert(calendarId='primary', body=event).execute()
     except HttpError as err:
-        # If the error is a rate limit or connection error,
-        #     wait and try again.
         print (err.content)
     finally:
         print ('Event created: %s' % (event.get('htmlLink')))
